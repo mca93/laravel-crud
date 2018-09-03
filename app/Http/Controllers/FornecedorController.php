@@ -154,4 +154,15 @@ class FornecedorController extends Controller
         // $pessoaContacto->notify(new PessoaContacto());
     }
 
+    public function documentsRequest($id){
+
+        return view('fornecedores.documentUpload');
+
+    }
+
+    public function showkyvStatus($id){
+
+        return view('kyv.show');
+    }
+
 }
