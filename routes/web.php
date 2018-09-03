@@ -27,7 +27,7 @@ Route::get('profile', function(){
 });
 
 Route::resource('fornecedor', 'FornecedorController')->only([
-    'store', 'edit', 'update']);
+    'store', 'edit', 'update', 'index']);
 Route::get('/fornecedor/{forncedor_id}/pessoaContacto/{pessoaContacto_id}', 'FornecedorController@getPessoaContactoDetails')->name('responsavel');
 Route::get('/fornecedor/{forncedor_id}/documentUpload', 'FornecedorController@documentsRequest')->name('document');
 Route::get('/kyv/{forncedor_id}/kyvStatus', 'FornecedorController@showkyvStatus')->name('kyv');

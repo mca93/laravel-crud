@@ -27,8 +27,10 @@
             <td class="text-center">{{$fornecedor->cidade}}</td>
             <td class="text-center">{{$fornecedor->email}}</td>
             <td class="text-center"><a href="{{route('responsavel', ['fornecedor_id'=>$fornecedor->id, 'pessoaContacto_id'=>$fornecedor->pessoasContacto()->first()->id])}}">{{$fornecedor->pessoasContacto()->first()->nome}}</a></td>
-            <td class="text-center"><a href="{{route('fornecedor.edit',['id'=>$fornecedor->id])}}" class="btn btn-warning"><span class="fa fa-edit">Alterar</span></a>
-            <button type="button" class="btn btn-danger"><span class="fa fa-eraser">Remover</span></button></td>
+            <td class="text-center">
+                <a href="{{route('fornecedor.edit',['id'=>$fornecedor->id])}}" class="btn btn-warning"><span class="fa fa-edit">Alterar</span></a>
+                <a href="{{route('kyv',['id'=>$fornecedor->id])}}"  class="btn btn-success"><span class="fa fa-eye">Visualizar</span></button>
+            </td>
             </tr>
     @endforeach
     </tbody>
