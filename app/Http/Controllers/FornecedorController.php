@@ -19,7 +19,14 @@ class FornecedorController extends Controller
      */
     public function index()
     {
-        //
+        $paises = Pais::all();
+        $tiposfornecedores = TipoFornecedor::all();
+        $categorias = Categoria::all();
+        $fornecedores = Fornecedor::all();
+    
+        return view('kyv.index')->withPaises($paises)
+                ->withFornecedores($fornecedores)->withTiposfornecedores($tiposfornecedores)
+                ->withCategorias($categorias);
     }
 
     /**
