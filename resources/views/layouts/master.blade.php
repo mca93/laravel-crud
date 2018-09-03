@@ -79,9 +79,9 @@
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="#"><i class="fa fa-bar-chart-o"></i> <span>Dashboard</span></a></li>
-        <li><a href="#"><i class="fa fa-bar-chart-o"></i> <span>Procurement</span></a></li>
+        <li><a href="#"><i class="fa fa-cogs"></i> <span>Procurement</span></a></li>
         <li><a href="#"><i class="fa fa-check"></i> <span>KYV Status</span></a></li>
-        <li><a href="#"><i class="fa fa-bar-chart-o"></i> <span>Contract Management</span></a></li>
+        <li><a href="#"><i class="fa fa-refresh"></i> <span>Contract Management</span></a></li>
         <li><a href="#"><i class="fa fa-edit"></i> <span>SRM Status</span></a></li>
 
         @can('isAdmin')
