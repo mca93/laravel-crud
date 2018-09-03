@@ -19,11 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::resource('category','CategoryController');
 
 Route::get('profile', function(){
     return view('profile');
 });
+
+Route::resource('fornecedor', 'FornecedorController')->only([
+    'store', 'edit', 'update']);
+Route::get('/fornecedor/{forncedor_id}/pessoaContacto/{pessoaContacto_id}', 'FornecedorController@getPessoaContactoDetails')->name('responsavel');
+Route::post('/fornecedor/{forncedor_id}/pessoaContacto/{pessoaContacto_id}/notificacao', 'FornecedorController@notifyPessoaContacto')->name('notify');
+
 
 /* View Composer*/
 View::composer(['*'], function($view){

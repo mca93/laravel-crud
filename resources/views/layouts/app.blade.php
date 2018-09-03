@@ -8,7 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>
+    <!--<img class="shortcut icon" src="{{ asset('images/logo.ico') }}">-->
+         {{ config('app.name', 'Standard Bank') }}
+    </title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

@@ -5,11 +5,18 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
-   <!-- CSRF Token -->
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+  
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>
+  <!--<img class="shortcut icon" src="{{ asset('images/logo.ico') }}"> -->
+    Procurement| Inicio
+  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
+  @yield('tags')
 
 </head>
 
@@ -22,9 +29,10 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+
+      <img src="{{asset('images/logo.png')}}" alt="" class="logo-mini">
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><img src="{{asset('images/logo.png')}}"><b>Standard Bank</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -70,8 +78,12 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="#"><i class="fa fa-file"></i> <span>Posts</span></a></li>
-        
+        <li><a href="#"><i class="fa fa-bar-chart-o"></i> <span>Dashboard</span></a></li>
+        <li><a href="#"><i class="fa fa-bar-chart-o"></i> <span>Procurement</span></a></li>
+        <li><a href="#"><i class="fa fa-check"></i> <span>KYV Status</span></a></li>
+        <li><a href="#"><i class="fa fa-bar-chart-o"></i> <span>Contract Management</span></a></li>
+        <li><a href="#"><i class="fa fa-edit"></i> <span>SRM Status</span></a></li>
+
         @can('isAdmin')
          <li class="active"><a href="{{url('category')}}"><i class="fa fa-microchip"></i> <span>Category</span></a></li>
         @endcan
