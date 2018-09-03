@@ -12,4 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('node_modules/chart.js/dist/Chart.js', 'public/Chart.js')
+mix.js('node_modules/chart.js/dist/Chart.bundle.js', 'public/Chart.bundle.js')
+
    .sass('resources/assets/sass/app.scss', 'public/css');

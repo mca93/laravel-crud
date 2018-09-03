@@ -76,16 +76,17 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="#"><i class="fa fa-bar-chart-o"></i> <span>Dashboard</span></a></li>
+        <li class="{{ Request::is('home') ? "header": ""}}"><a href="{{url('/home')}}"><i class="fa fa-bar-chart-o"></i> <span>Dashboard</span></a></li>
         <li><a href="#"><i class="fa fa-cogs"></i> <span>Procurement</span></a></li>
         <li><a href="#"><i class="fa fa-check"></i> <span>KYV Status</span></a></li>
         <li><a href="#"><i class="fa fa-refresh"></i> <span>Contract Management</span></a></li>
         <li><a href="#"><i class="fa fa-edit"></i> <span>SRM Status</span></a></li>
 
         @can('isAdmin')
-         <li class="active"><a href="{{url('category')}}"><i class="fa fa-microchip"></i> <span>Category</span></a></li>
+         <!--
+           <li class="active"><a href="{{url('category')}}"><i class="fa fa-microchip"></i> <span>Category</span></a></li>
+        -->
         @endcan
 
         @can('isAdmin')
@@ -134,9 +135,8 @@
   </footer>
 </div>
 
-
+@yield('scripts')
 <script src="{{asset('js/app.js')}}"></script>
-
 <script>
 
   
