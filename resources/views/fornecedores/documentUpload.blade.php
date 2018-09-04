@@ -28,7 +28,7 @@
 
          <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -65,7 +65,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -84,7 +84,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -103,7 +103,7 @@
         </div>
            <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -122,7 +122,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -141,7 +141,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -160,7 +160,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -178,7 +178,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -196,7 +196,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -214,7 +214,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -232,7 +232,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>
@@ -250,7 +250,7 @@
         </div>
         <div class="col-md-6" style="margin-top: 10px">
              <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
+            <button class="upload-btn">Upload a file</button>
             <input type="file" name="myfile" />
         </div>
         </div>

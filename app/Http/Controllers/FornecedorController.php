@@ -149,13 +149,13 @@ class FornecedorController extends Controller
 
     public function notifyPessoaContacto(Request $request, $fornecedor_id, $pessoaContacto_id)
     {
-        // $pessoaContacto = PessoaContacto::find($pessoaContacto_id);
+        $pessoaContacto = PessoaContacto::find($pessoaContacto_id);
 
-        // $data = array('name'=>$pessoaContacto->nome, "body" => "Test mail");
-        // Mail::send('emails.mail', $data, function($message) {
-        //     $message->to('TO_EMAIL_ADDRESS', $data->email)
-        //             ->subject('Artisans Web Testing Mail');
-        // });
+        $data = array('name'=>$pessoaContacto->nome, "body" => "Test mail");
+        Mail::send('emails.mail', $data, function($message) {
+            $message->to('TO_EMAIL_ADDRESS', $data->email)
+                    ->subject('Artisans Web Testing Mail');
+        });
 
         
         // $pessoaContacto->notify(new PessoaContacto());

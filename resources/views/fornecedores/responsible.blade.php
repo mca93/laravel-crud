@@ -56,7 +56,7 @@
       <div class="modal-body">
         <form action="{{route('notify', ['fornecedor_id'=>$fornecedor->id, 'pessoaContacto_id'=>$fornecedor->pessoasContacto()->first()->id])}}" method="POST">
         {{ csrf_field() }}
-        <div class="row">
+        <div class="col-md-12">
             <div class="btn-group btn-group-toggle" data-toggle="buttons" onchange="teste()">
                 <label class="btn btn-secondary active">
                   <input type="radio" name="options" id="option1" value="1" autocomplete="off" checked>Notificar por SMS e E-mail

@@ -8,6 +8,10 @@
 
 
  <div class="content">
+ <div class="col-md-offset-10" style="margin-bottom: 30px">
+
+        <h3 class="display-6">KYV Status: <span class="badge badge-danger">NO</span></h3>
+ </div>
  <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">

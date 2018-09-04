@@ -54,7 +54,7 @@ body {
     display: inline-block;
   }
   
-  .btn {
+  .upload-btn {
     border: 2px solid gray;
     color: rgb(8, 5, 5);
     background-color: rgb(201, 201, 201);
