@@ -9,6 +9,8 @@ use App\Pais;
 use App\TipoFornecedor;
 use App\Categoria;
 use App\PessoaContacto;
+use App\Helpers\Helpers;
+
 
 class FornecedorController extends Controller
 {
@@ -151,11 +153,27 @@ class FornecedorController extends Controller
     {
         $pessoaContacto = PessoaContacto::find($pessoaContacto_id);
 
-        $data = array('name'=>$pessoaContacto->nome, "body" => "Test mail");
-        Mail::send('emails.mail', $data, function($message) {
-            $message->to('TO_EMAIL_ADDRESS', $data->email)
-                    ->subject('Artisans Web Testing Mail');
-        });
+        $canal = $request->input('options');
+
+            if ($canal == 3) {
+                Helpers::enviar_sms($pessoaContacto->celular, $request->input('mensagem'));
+
+            } else if($canal == 2) {
+                Helpers::sendWelcomeMail($pessoaContacto, $request->input('mensagem'));
+
+            }else{
+                Helpers::enviar_sms($pessoaContacto->celular, $request->input('mensagem'));
+                Helpers::sendWelcomeMail($pessoaContacto, $request->input('mensagem'));
+            }
+            
+
+
+
+        // $data = array('name'=>$pessoaContacto->nome,"email"=>$pessoaContacto->email, "body" => "Test mail");
+        // Mail::send('emails.mail',  $data, function($message) {
+        //     $message->to('TO_EMAIL_ADDRESS',  "j.anantlal@gmail.com")
+        //             ->subject('Artisans Web Testing Mail');
+        // });
 
         
         // $pessoaContacto->notify(new PessoaContacto());
