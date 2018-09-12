@@ -8,12 +8,14 @@
          <img src="{{asset('images/usr.png')}}">
          <span class="badge badge-default" style="font-family: sans-serif; font-size: 20px"><b>{{$pessoaContacto->nome}}</span>
         </div>
-        <div class="col-md-6">
+        <div class = "row">
+        </div>
+        <div class="col-md-6 col-md-offset-2">
         <span class="badge badge-default" style="font-family: sans-serif; font-size: 20px;">
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">Pessoa de Contacto da Empresa {{$fornecedor->nome}}</th>
+              <th scope="col">Pessoa de Contacto {{substr($fornecedor->nome, 0, 20)}}{{strlen($fornecedor->nome)>20 ? "...": ""}}</th>
             </tr>
           </thead>
           <tbody>
@@ -32,8 +34,8 @@
         </tbody>
         </table>
           </span>
-          <div style=" margin-left: 30px; margin-top: 10px">
-          <button type="buttun" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary btn-block"><i class="fa fa-envelope"></i>Notificar a pessoa de contacto</button>
+          <div class = "col-md-offset-2" style=" margin-left: 30px; margin-top: 10px">
+          <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary btn-block"><i class="fa fa-envelope"></i>Notificar a pessoa de contacto</button>
           </div>
         </div>
       </div>

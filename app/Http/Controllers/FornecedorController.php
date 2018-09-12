@@ -84,7 +84,7 @@ class FornecedorController extends Controller
 
         $forncedor->pessoasContacto()->save($pessoaContacto);
 
-        $this->getRightDocs($tipofornecedor, $forncedor);
+        //$this->getRightDocs($tipofornecedor, $forncedor);
 
     return redirect(route('home'));
 
