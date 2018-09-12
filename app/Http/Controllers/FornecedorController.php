@@ -11,6 +11,7 @@ use App\TipoFornecedor;
 use App\Categoria;
 use App\PessoaContacto;
 use App\Helpers\Helpers;
+use App\FornecedorDocs;
 
 
 class FornecedorController extends Controller
@@ -213,12 +214,18 @@ class FornecedorController extends Controller
 
     }
 
-    public function showkyvStatus($id){
+    public function showkyvStatus($id)
+    {
+        $activedocs = [];
+        $fornecedor = Fornecedor::find($id);
 
-        return view('kyv.show');
+        $kyvdocs = $this->getKyvDocs($id, $fornecedor->tipofornecedor->id);
+      //  $activedocs
+
+        return view('kyv.show')->withFornecedor($fornecedor)->with('kyvdocs', $kyvdocs);
     }
 
-    private function getRightDocs($designacao){
+    public static function getRightDocs($designacao){
      
         $documentos = null;
 
@@ -246,6 +253,13 @@ class FornecedorController extends Controller
 
         }
         return $documentos;
+    }
+
+    public function getKyvDocs($fornecedor_id, $tipofornecedor_id)
+    {
+        return $this->fornecedorDocs = FornecedorDocs::where('fornecedor_id', '=', $fornecedor_id)
+                                              ->where('tipofornecedor_id', '=', $tipofornecedor_id)->get();
+          
     }
 
 }

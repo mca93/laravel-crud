@@ -14,7 +14,7 @@ class FornecedorDocs extends Model
     return $this->belongsTo('App\Fornecedor');
   }
 
-  public function tipoFornecedor()
+  public function tipofornecedor()
   {
     return $this->belongsTo('App\TipoFornecedor');
   }

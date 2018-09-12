@@ -221,7 +221,7 @@
                         <h2 class="display-" align="center" >Faça Upload dos Documentos Seguintes</h2>
                     </div>
                     <div class="col-md-offset-2">
-                    <form action = "{{route('save', ['id'=>$fornecedor->id])}}" method="POST"> 
+                    <form action = "{{route('save', ['id'=>$fornecedor->id])}}" method="POST" enctype="multipart/form-data"> 
                     {{ csrf_field() }}
 
                     @if($fornecedor->tipofornecedor->designacao == "Empresa Nacional")
@@ -381,7 +381,7 @@
                             <div class="col-md-6" style="margin-top: 10px">
                                 <div class="upload-btn-wrapper">
                                     <button class="upload-btn">Upload a file</button>
-                                    <input type="file" name="myfile{{$documento->id}}" />
+                                    <input type="file" name="myfile{{$documento->id}}" id="myfile{{$documento->id}}"/>
                                 </div>
                             </div>
                 @endforeach
