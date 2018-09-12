@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Fornecedor;
@@ -183,9 +184,12 @@ class FornecedorController extends Controller
 
     public function documentsRequest($id){
         $forncedor = Fornecedor::find($id);
-        //$listOfDocs = $this->getRightDocs($forncedor);
+       
+        $listOfDocs = $this->getRightDocs($forncedor->tipofornecedor->designacao);
 
-        return view('fornecedores.documentUpload')->withFornecedor($forncedor);
+        //dd($listOfDocs);
+        return view('fornecedores.documentUpload')->withFornecedor($forncedor)
+                    ->with('documentos',$listOfDocs);
 
     }
 
@@ -194,17 +198,32 @@ class FornecedorController extends Controller
         return view('kyv.show');
     }
 
-    private function getRightDocs(TipoFornecedor $tipofornecedor, Fornecedor $fornecedor){
+    private function getRightDocs($designacao){
      
         $documentos = null;
 
-        if ($tipofornecedor_designacao =="Empresa Nacional") {
-            $documentos = DB::table('empresa_nacional_docs')->select('*')
-                                ->where('tipofornecedor_id','=',$tipofornecedor->id)->get();
+        if($designacao =="Empresa Nacional") {
+            $documentos = DB::table('empresa_nacional_docs')->distinct()->get();
 
             //enviar e-mail com link de formulario certo.
-        } else {
-            # code...
+        }elseif ($designacao =="Empresa em nome individual") {
+            $documentos = DB::table('empresa_em_nome_individual_docs')->distinct()->get();
+
+        }elseif ($designacao =="Empresa Estrangeira") {
+            $documentos = DB::table('empresa_estrangeira_docs')->distinct()->get();
+
+        }elseif ($designacao =="Associacoes") {
+            $documentos = DB::table('associacoes_docs')->distinct()->get();
+
+        }elseif ($designacao =="ATM-Agencias") {
+            $documentos = DB::table('atm_agencias_docs')->distinct()->get();
+
+        }elseif ($designacao =="Instituicoes do Estado") {
+            $documentos = DB::table('instituicos_do_estado_docs')->distinct()->get();
+
+        }else {
+            $documentos = DB::table('petty_cash_docs')->distinct()->get();
+
         }
         return $documentos;
     }
