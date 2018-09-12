@@ -33,6 +33,8 @@ Route::get('/fornecedor/{forncedor_id}/documentUpload', 'FornecedorController@do
 Route::get('/kyv/{forncedor_id}/kyvStatus', 'FornecedorController@showkyvStatus')->name('kyv');
 Route::post('/fornecedor/{forncedor_id}/pessoaContacto/{pessoaContacto_id}/notificacao', 'FornecedorController@notifyPessoaContacto')->name('notify');
 
+Route::post('/fornecedor/{forncedor_id}/documentUpload/save_docs', 'DocumentController@save_docs')->name('save');
+
 
 /* View Composer*/
 View::composer(['*'], function($view){

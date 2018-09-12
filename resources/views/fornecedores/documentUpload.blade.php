@@ -221,6 +221,9 @@
                         <h2 class="display-" align="center" >Faça Upload dos Documentos Seguintes</h2>
                     </div>
                     <div class="col-md-offset-2">
+                    <form action = "{{route('save', ['id'=>$fornecedor->id])}}" method="POST"> 
+                    {{ csrf_field() }}
+
                     @if($fornecedor->tipofornecedor->designacao == "Empresa Nacional")
                 @foreach($documentos as $documento)
                     <div class="col-md-10">
@@ -383,15 +386,16 @@
                             </div>
                 @endforeach
             @endif
-
             <div class="col-md-10" style="margin-top:20px">
                 <div class="col-md-5">
-                <button type="button" class="btn btn-success block">Gravar os Documentos</button>
+                <button type="button" class="btn btn-success btn-block">Gravar os Documentos</button>
                 </div>
                 <div class="col-md-5">
-                <button type="button" class="btn btn-primary block">Submeter os Documentos</button>               
+                <button type="submit" class="btn btn-primary btn-block">Submeter os Documentos</button>      
                 </div>
             </div>
+            </form>
+
                     </div>
                 </div>
             </div>
