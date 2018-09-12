@@ -126,9 +126,29 @@ class FornecedorController extends Controller
     {
         $forncedor= Fornecedor::find($id);
 
-        $forncedor->update(['nome'=>$request->input('nome'), 'tipo'=>$request->input('tipo'), 'localizacao'=>$request->input('localizacao')]);
+        $forncedor->update([
+            'nome'=>$request->input('nome'), 
+            'nuit'=>$request->input('nuit'), 
+            'email'=>$request->input('email_fornecedor'),
+            'localizacao'=>$request->input('localizacao'),
+            'telefone'=>$request->input('telefone_fornecedor'),
+            'cidade'=>$request->input('cidade'),
+            'numero'=>$request->input('numero'),
+            'banco'=>$request->input('banco_fornecedor'),
+            'praca'=>$request->input('praca_dobanco_dofofornecedor'),
+            'conta'=>$request->input('conta_fornecedor'),
+            'nib'=>$request->input('nib_fornecedor'),
+            'moeda'=>$request->input('moeda_conta')]);
 
-        return redirect(route('home'));
+            $pessoaContacto = $forncedor->pessoasContacto->first();
+            $pessoaContacto->update([
+                'nome'=>$request->input('nome_pessoa'),
+                'email'=>$request->input('email_pessoa'),
+                'telefone'=>$request->input('telefone_pessoa'),
+                'celular'=>$request->input('celular_pessoa'),
+            ]);
+           
+        return redirect(route('fornecedor.index'));
 
     }
 

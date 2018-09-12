@@ -12,7 +12,8 @@
         </ul>
         <div class="tab-content col-md-offset-2" id="pills-tabContent">
          <div class="tab-pane fade show active col-md-10" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="margin-top:20px">
-            <form action="{{ route('fornecedor.store') }}" method="POST" >
+            <form action="{{url('fornecedor/'.$fornecedor->id)}}" method="POST" >
+            <input type="hidden" name="_method" value="PUT">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Tipo de Fornecedor</label>
@@ -216,7 +217,7 @@
                     
                     <div class="col-md-6" style="margin-top: 10px">
                         <div class="upload-btn-wrapper">
-                        <button class="upload-btn">Upload a file</button>
+                        <button class="upload-btn" >Upload a file</button>
                         <input type="file" name="myfile{{$documento->id}}" />
                         </div>
                     </div>

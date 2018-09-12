@@ -10,6 +10,7 @@ class PessoaContacto extends Model
 
     use Notifiable;
 
+    protected $fillable = ['nome','email', 'telefone','celular'];
     protected $table = 'pessoa_contactos';
 
     public function fornecedor(){
