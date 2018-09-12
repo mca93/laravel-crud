@@ -32,12 +32,28 @@ class HomeController extends Controller
         $tiposfornecedores = TipoFornecedor::all();
         $categorias = Categoria::all();
         $fornecedores = Fornecedor::all();
-    
+
+        $tipo_de_empresas = json_encode(array_map(function($x) {
+            return $x['designacao'];
+        },$this->tipo_fornecedores()->toArray()));
+
+        $tipo_de_empresas_count = json_encode(array_map(function($x) {
+            return $x['tipo_fornecedores_count'];
+        }, $this->tipo_fornecedores()->toArray()));
+
         return view('home')->withPaises($paises)
                 ->withFornecedores($fornecedores)->withTiposfornecedores($tiposfornecedores)
-                ->withCategorias($categorias);
+                ->withCategorias($categorias)
+                ->with('tipo_de_empresas',$tipo_de_empresas)
+                ->with('tipo_de_empresas_count', $tipo_de_empresas_count);
     }
 
-    
+    private function tipo_fornecedores(){
+
+        return TipoFornecedor::select(DB::raw('count(fornecedores.tipofornecedor_id) as tipo_fornecedores_count, designacao'))
+        ->leftjoin('fornecedores', 'tipo_fornecedors.id','=','fornecedores.tipofornecedor_id')
+        ->groupBy('designacao')
+        ->get();
+    }
    
 }

@@ -2,265 +2,213 @@
 
 
 @section('content')
+<div class="col-md-12">
+    <!--<img src="..." alt="..." class="rounded-circle"> -->
+</div>
+<div class="col-md-12">
 
-<div class="jumbotron jumbotron-fluid">
 
-                <div class="col-md-offset-6">
-                <img src="{{asset('images/home_logo.png')}}" alt="" width="50px">
+
+        <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+        <li class="nav-item active">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Profile da Minha Empresa</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Documentos Necessarios</a>
+        </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent" style="margin-top:20px">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        
+        <form action="{{ route('fornecedor.store') }}" method="POST" >
+            {{ csrf_field() }}
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Tipo de Fornecedor</label>
+                <input type="text" class="form-control" id="tipo_fornecedor" value = "{{$fornecedor->tipofornecedor->designacao}}"name="tipo_fornecedor" disabled>     
+            </div>
+            <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                       <b><span class="fa fa-home"> Detalhes da Empresa</span></b>
+                    </button>
+                </h5>
+                </div>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    
+                        <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" value="{{$fornecedor->nome}}">
+                        </div>
+                 
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="nome">NUIT</label>
+                        <input type="number" class="form-control" id="nuit" name="nuit" aria-describedby="emailHelp" value="{{$fornecedor->nuit}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nome">E-mail do Fornecedor</label>
+                            <input type="email" class="form-control" id="email_fornecedor" name="email_fornecedor" aria-describedby="emailHelp" value="{{$fornecedor->email}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="nome">Telefone</label>
+                        <input type="number" class="form-control" id="telefone_fornecedor" name="telefone_fornecedor" aria-describedby="emailHelp" value="{{$fornecedor->telefone}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nome">Categoria do Fornecedor</label>
+                            <input type="text"  class="form-control" id="categoria_fornecedor" name="categoria_fornecedor" aria-describedby="emailHelp" value="{{$fornecedor->categoria->designacao}}" disabled>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nome">Pais do Fornecedor</label>
+                            <input type="text" class="form-control" id="pais_fornecedor" name="pais_fornecedor"value="{{$fornecedor->pais->designacao}}" disabled>
+                                         
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nome">Cidade do Fornecedor</label>
+                            <input type="text" class="form-control" id="cidade" name="cidade" aria-describedby="emailHelp" value="{{$fornecedor->cidade}}">              
+                        </div>
+                    </div>
                 </div>
 
 
-    <h2 class="display-4" align="center" >Faça Upload dos Documentos Seguintes</h2>
-    <div class = "col-md-offset-3" style="margin-top: 20px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nome">Avenida/Ruar</label>
+                            <input type="text" class="form-control" id="localizacao" name="localizacao"  value="{{$fornecedor->localizacao}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nome">Numero</label>
+                            <input type="number" class="form-control" id="numero" name="numero" aria-describedby="emailHelp" value="{{$fornecedor->numero}}">              
+                        </div>
+                    </div>
+                </div>
 
-    <div class="row">
-        <h4><span class="badge badge-secondary">1 </span> Formulário de Vendor Preenchido</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissaoDoc1" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade1" placeholder="Valido Ate">
-        </div>
+                </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <b><span class="fa fa-user"> Detalhes da Pessao de Contacto</span></b>
+                    </button>
+                </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="nome">Nome da Pessoa</label>
+                        <input type="text" class="form-control" id="nome_pessoa" name="nome_pessoa" aria-describedby="emailHelp" value="{{$fornecedor->pessoasContacto->first()->nome}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nome">E-mail da Pessoa</label>
+                            <input  type="email" class="form-control" id="email_pessoa" name="email_pessoa" aria-describedby="emailHelp" value="{{$fornecedor->pessoasContacto->first()->email}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="nome">Telefone</label>
+                        <input type="number" class="form-control" id="telefone_pessoa" name="telefone_pessoa" aria-describedby="emailHelp" value="{{$fornecedor->pessoasContacto->first()->telefone}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="nome">Celular da Pessoa</label>
+                        <input type="text" class="form-control" id="celular_pessoa" name="celular_pessoa" aria-describedby="emailHelp" value="{{$fornecedor->pessoasContacto->first()->celular}}">
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                     <b><span class="fa fa-bank">Detalhes Bancarios</span></b>
 
-       
-
-         <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
+                    </button>
+                </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="nome">Nome do Banco</label>
+                        <input type="text" class="form-control" id="banco_fornecedor" name="banco_fornecedor" aria-describedby="emailHelp" value="{{$fornecedor->banco}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nome">Praça do Banco</label>
+                            <input  type="text" class="form-control" id="praca_dobanco_dofofornecedor" name="praca_dobanco_dofofornecedor" aria-describedby="emailHelp" value="{{$fornecedor->praca}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="nome">Numero da Conta</label>
+                        <input type="number" class="form-control" id="conta_fornecedor" name="conta_fornecedor" aria-describedby="emailHelp" value="{{$fornecedor->conta}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="nome">NIB / IBAN</label>
+                        <input type="text" class="form-control" id="nib_fornecedor" name="nib_fornecedor" aria-describedby="emailHelp" value="{{$fornecedor->nib}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="form-group">
+                        <label for="nome">Moeda da Conta</label>
+                        <input type="text" class="form-control" id="moeda_conta" name="moeda_conta" aria-describedby="emailHelp" value="{{$fornecedor->moeda}}">
+                        </div>
+                    </div>
+                </div>                     
+                 </div>
+                </div>
+            </div>
+            </div>          
+            <button type="submit" class="btn btn-primary btn-block">Actualizar Dados do Perfil da Minha Empresa</button>
+        </form>
+        
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+         Dados aqui
         </div>
         </div>
-    </div>
-
-    <div class="row">
-        <h4><span class="badge badge-secondary">2 </span> Cópia de Alvará ou Licença da firma</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao2" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade2" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <h4><span class="badge badge-secondary">3 </span> Certidão de registo da firma</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao3" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade3" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-
-        <div class="row">
-        <h4><span class="badge badge-secondary">4 </span> Publicação no Boletim da República</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao4" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade4" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-
-   <div class="row">
-        <h4><span class="badge badge-secondary">5 </span> Certidão de quitação das Finanças</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao5" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade5" placeholder="Valido Ate">
-        </div>
-           <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-    
-   <div class="row">
-        <h4><span class="badge badge-secondary">6 </span> Certidão de quitação do INSS</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao6" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade6" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <h4><span class="badge badge-secondary">7 </span> Documento de Atribuição de NUIT ou Copia do Cartão do NUIT</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao7" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade7" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
 
 
-    <div class="row">
-        <h4><span class="badge badge-secondary">8 </span> Amostra do Modelo de Factura e Recibo anulado</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao8" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade8" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <h4><span class="badge badge-secondary">9 </span> Declaração de não existência de conflito de interesse entre a firma e o Standard Bank e ou os seus colaboradores</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao9" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade9" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <h4><span class="badge badge-secondary">10 </span> Dados Bancários do Fornecedor, incluindo o NIB, confirmados pelo Banco </h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao10" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade10" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <h4><span class="badge badge-secondary">11 </span> Declaração de Existencia de Plano de Contingencia na Empresa (somente para empresa consideradas criticas)</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao11" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade11" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <h4><span class="badge badge-secondary">12 </span> Codigo de Conduta</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao12" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade12" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <h4><span class="badge badge-secondary">13 </span> Declaração de Confidencialidade</h4>
-        <div class="col-md-4">
-        <label for="dataEmissao"> Data de Emissao</label>
-        <input type="date" class="form-control" id="dataEmissao13" placeholder="Data de Emissao">
-        </div>
-        <div class="col-md-4">
-        <label for="dataValidade"> Valido ate</label>
-        <input type="date" class="form-control" id="dataValidade13" placeholder="Valido Ate">
-        </div>
-        <div class="col-md-6" style="margin-top: 10px">
-             <div class="upload-btn-wrapper">
-            <button class="upload-btn">Upload a file</button>
-            <input type="file" name="myfile" />
-        </div>
-        </div>
-    </div>
 
 
-<div class="col-md-8" style="margin-top: 30px">
-    <button type="button" class="btn btn-primary btn-block">Submeter</button>
-</div>
-  </div>
-  </div>
-</div>
 @endsection

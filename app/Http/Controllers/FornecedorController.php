@@ -52,7 +52,7 @@ class FornecedorController extends Controller
        $forncedor = new Fornecedor;
        $pais = Pais::find($request->input('pais_fornecedor'));
        $categoria = Categoria::find($request->input('categoria_fornecedor'));
-       $tiposfornecedores = TipoFornecedor::find($request->input('tipo_fornecedor'));
+       $tipofornecedor = TipoFornecedor::find($request->input('tipo_fornecedor'));
 
       
        $forncedor->nome = $request->input('nome');
@@ -69,7 +69,7 @@ class FornecedorController extends Controller
        $forncedor->moeda = $request->input('moeda_conta'); 
        
        $forncedor->pais()->associate($pais);
-       $forncedor->tipofornecedor()->associate($tiposfornecedores);
+       $forncedor->tipofornecedor()->associate($tipofornecedor);
        $forncedor->categoria()->associate($categoria);
 
 
@@ -83,6 +83,8 @@ class FornecedorController extends Controller
         $pessoaContacto->celular = $request->input('celular_pessoa');
 
         $forncedor->pessoasContacto()->save($pessoaContacto);
+
+        $this->getRightDocs($tipofornecedor, $forncedor);
 
     return redirect(route('home'));
 
@@ -180,14 +182,31 @@ class FornecedorController extends Controller
     }
 
     public function documentsRequest($id){
+        $forncedor = Fornecedor::find($id);
+        //$listOfDocs = $this->getRightDocs($forncedor);
 
-        return view('fornecedores.documentUpload');
+        return view('fornecedores.documentUpload')->withFornecedor($forncedor);
 
     }
 
     public function showkyvStatus($id){
 
         return view('kyv.show');
+    }
+
+    private function getRightDocs(TipoFornecedor $tipofornecedor, Fornecedor $fornecedor){
+     
+        $documentos = null;
+
+        if ($tipofornecedor_designacao =="Empresa Nacional") {
+            $documentos = DB::table('empresa_nacional_docs')->select('*')
+                                ->where('tipofornecedor_id','=',$tipofornecedor->id)->get();
+
+            //enviar e-mail com link de formulario certo.
+        } else {
+            # code...
+        }
+        return $documentos;
     }
 
 }

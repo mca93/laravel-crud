@@ -28,5 +28,8 @@ class Fornecedor extends Model
     {
         return $this->hasMany('App\PessoaContacto');
     }
-
+    
+    public function documentos(){
+        return $this->hasMany('App\FornecedorDocs');
+    }
 }
