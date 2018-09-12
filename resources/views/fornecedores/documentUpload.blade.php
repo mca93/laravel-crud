@@ -3,9 +3,9 @@
 
 @section('content')
         <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
-        <li class="nav-item active">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Profile da Minha Empresa</a>
-        </li>
+            <li class="nav-item active">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Profile da Minha Empresa</a>
+            </li>
         <li class="nav-item">
             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Documentos Necessarios</a>
         </li>
@@ -245,7 +245,121 @@
                         </div>
                     </div>
                 @endforeach
+              @elseif($fornecedor->tipofornecedor->designacao == "Empresa Estrangeira")
+                @foreach($documentos as $documento)
+                        <div class="col-md-10">
+                            <h4><span class="badge badge-secondary">{{$documento->id}}</span>{{$documento->designacao}}</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dataEmissao"> Data de Emissao</label>
+                            <input type="date" class="form-control" id="dataEmissaoDoc{{$documento->id}}" name="dataEmissaoDoc{{$documento->id}}" placeholder="Data de Emissao">
+                        </div>
+                            @if($documento->prazo =="Sim")
+                            <div class="col-md-4">
+                                <label for="dataValidade"> Valido ate</label>
+                                <input type="date" class="form-control" id="dataValidade{{$documento->id}}" name="dataValidade{{$documento->id}}" placeholder="Valido Ate">
+                            </div>
+                            @endif
+                        
+                        <div class="col-md-6" style="margin-top: 10px">
+                            <div class="upload-btn-wrapper">
+                            <button class="upload-btn">Upload a file</button>
+                            <input type="file" name="myfile{{$documento->id}}" />
+                            </div>
+                        </div>
+                    @endforeach
+              @elseif($fornecedor->tipofornecedor->designacao == "Associacoes")
+                @foreach($documentos as $documento)
+                            <div class="col-md-10">
+                                <h4><span class="badge badge-secondary">{{$documento->id}}</span>{{$documento->designacao}}</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="dataEmissao"> Data de Emissao</label>
+                                <input type="date" class="form-control" id="dataEmissaoDoc{{$documento->id}}" name="dataEmissaoDoc{{$documento->id}}" placeholder="Data de Emissao">
+                            </div>
+                                @if($documento->prazo =="Sim")
+                                <div class="col-md-4">
+                                    <label for="dataValidade"> Valido ate</label>
+                                    <input type="date" class="form-control" id="dataValidade{{$documento->id}}" name="dataValidade{{$documento->id}}" placeholder="Valido Ate">
+                                </div>
+                                @endif
+                            
+                            <div class="col-md-6" style="margin-top: 10px">
+                                <div class="upload-btn-wrapper">
+                                <button class="upload-btn">Upload a file</button>
+                                <input type="file" name="myfile{{$documento->id}}" />
+                                </div>
+                            </div>
+                        @endforeach
+              @elseif($fornecedor->tipofornecedor->designacao == "ATM-Agencias")
+              @foreach($documentos as $documento)
+                                <div class="col-md-10">
+                                    <h4><span class="badge badge-secondary">{{$documento->id}}</span>{{$documento->designacao}}</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="dataEmissao"> Data de Emissao</label>
+                                    <input type="date" class="form-control" id="dataEmissaoDoc{{$documento->id}}" name="dataEmissaoDoc{{$documento->id}}" placeholder="Data de Emissao">
+                                </div>
+                                    @if($documento->prazo =="Sim")
+                                    <div class="col-md-4">
+                                        <label for="dataValidade"> Valido ate</label>
+                                        <input type="date" class="form-control" id="dataValidade{{$documento->id}}" name="dataValidade{{$documento->id}}" placeholder="Valido Ate">
+                                    </div>
+                                    @endif
+                                
+                                <div class="col-md-6" style="margin-top: 10px">
+                                    <div class="upload-btn-wrapper">
+                                    <button class="upload-btn">Upload a file</button>
+                                    <input type="file" name="myfile{{$documento->id}}" />
+                          </div>
+                     </div>
+                @endforeach
+              @elseif($fornecedor->tipofornecedor->designacao == "Instituicoes do Estado")
+                @foreach($documentos as $documento)
+                                <div class="col-md-10">
+                                    <h4><span class="badge badge-secondary">{{$documento->id}}</span>{{$documento->designacao}}</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="dataEmissao"> Data de Emissao</label>
+                                    <input type="date" class="form-control" id="dataEmissaoDoc{{$documento->id}}" name="dataEmissaoDoc{{$documento->id}}" placeholder="Data de Emissao">
+                                </div>
+                                    @if($documento->prazo =="Sim")
+                                    <div class="col-md-4">
+                                        <label for="dataValidade"> Valido ate</label>
+                                        <input type="date" class="form-control" id="dataValidade{{$documento->id}}" name="dataValidade{{$documento->id}}" placeholder="Valido Ate">
+                                    </div>
+                                    @endif
+                                
+                                <div class="col-md-6" style="margin-top: 10px">
+                                    <div class="upload-btn-wrapper">
+                                    <button class="upload-btn">Upload a file</button>
+                                    <input type="file" name="myfile{{$documento->id}}" />
+                          </div>
+                     </div>
+                @endforeach
               @else
+              @foreach($documentos as $documento)
+                                <div class="col-md-10">
+                                    <h4><span class="badge badge-secondary">{{$documento->id}}</span>{{$documento->designacao}}</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="dataEmissao"> Data de Emissao</label>
+                                    <input type="date" class="form-control" id="dataEmissaoDoc{{$documento->id}}" name="dataEmissaoDoc{{$documento->id}}" placeholder="Data de Emissao">
+                                </div>
+                                    @if($documento->prazo =="Sim")
+                                    <div class="col-md-4">
+                                        <label for="dataValidade"> Valido ate</label>
+                                        <input type="date" class="form-control" id="dataValidade{{$documento->id}}" name="dataValidade{{$documento->id}}" placeholder="Valido Ate">
+                                    </div>
+                                    @endif
+                                
+                                <div class="col-md-6" style="margin-top: 10px">
+                                    <div class="upload-btn-wrapper">
+                                    <button class="upload-btn">Upload a file</button>
+                                    <input type="file" name="myfile{{$documento->id}}" />
+                          </div>
+                     </div>
+                @endforeach
             @endif
         </div>
         </div>
