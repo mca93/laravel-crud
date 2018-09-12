@@ -3,9 +3,9 @@
 
 @section('content')
         <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
-        <li class="nav-item active">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Profile da Minha Empresa</a>
-        </li>
+            <li class="nav-item active">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Profile da Minha Empresa</a>
+            </li>
         <li class="nav-item">
             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Documentos Necessarios</a>
         </li>
