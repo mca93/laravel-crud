@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use App\Fornecedor;
 use App\Pais;
 use App\TipoFornecedor;
@@ -12,6 +11,8 @@ use App\Categoria;
 use App\PessoaContacto;
 use App\Helpers\Helpers;
 use App\FornecedorDocs;
+use Mail;
+use App\Mail\NewVendor;
 
 
 class FornecedorController extends Controller
@@ -86,6 +87,8 @@ class FornecedorController extends Controller
 
         $forncedor->pessoasContacto()->save($pessoaContacto);
 
+
+        //Mail::to($pessoaContacto->email)->send(new NewVendor());
         //$this->getRightDocs($tipofornecedor, $forncedor);
 
     return redirect(route('home'));
@@ -216,13 +219,15 @@ class FornecedorController extends Controller
 
     public function showkyvStatus($id)
     {
-        $activedocs = [];
+       // $activedocs = [];
         $fornecedor = Fornecedor::find($id);
 
         $kyvdocs = $this->getKyvDocs($id, $fornecedor->tipofornecedor->id);
+
+        $expected_docs = $this->getRightDocs($fornecedor->tipofornecedor->designacao);
       //  $activedocs
 
-        return view('kyv.show')->withFornecedor($fornecedor)->with('kyvdocs', $kyvdocs);
+        return view('kyv.show')->withFornecedor($fornecedor)->with('kyvdocs', $kyvdocs)->with('expected_docs', $expected_docs);
     }
 
     public static function getRightDocs($designacao){

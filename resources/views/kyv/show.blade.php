@@ -8,40 +8,52 @@
 
 
  <div class="content">
- <div class="col-md-offset-10" style="margin-bottom: 30px">
+    <div class="col-md-offset-10" style="margin-bottom: 30px">
 
-        <h3 class="display-6">KYV Status: <span class="badge badge-danger">NO</span></h3>
- </div>
- <!-- Nav tabs -->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"> Alvará</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Certidão de registo</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">BR</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Quitação das Finanças</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Quitação do INSS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">NUIT</a>
-  </li>
+            <h3 class="display-6">KYV Status: <span class="badge badge-danger">
+              @if(count($expected_docs) == count($kyvdocs))
+                YES
+              @else
+                NO
+              @endif
+            </span></h3>
+    </div>
 
-</ul>
+    <!--Documentos inserdidos-->
+    <h2 class="display-4" align="center" >Documentos Inseridos</h2>
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
-  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
-</div>
+    <div class="accordion" id="accordionExample">
+    
+      @foreach($expected_docs as $expected_doc)
+        @foreach($kyvdocs as $inserted_doc)
+            @if($inserted_doc->doc_id == $expected_doc->id)
+            <div class="card">
+              <div class="card-header" id="heading{{$inserted_doc->doc_id}}">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapse{{$inserted_doc->doc_id}}">
+                    {{$expected_doc->designacao}}
+                  </button>
+                </h5>
+              </div>
 
+              <div id="collapse{{$inserted_doc->doc_id}}" class="collapse show" aria-labelledby="heading{{$inserted_doc->doc_id}}" data-parent="#accordionExample">
+                <div class="card-body">
+                  <embed src="{{'./imagem/'.$inserted_doc->path}}" width="800px" height="2100px" />
+                </div>
+              </div>
+            </div>
+            @else
+
+            <div class="alert alert-danger" role="alert">
+              {{$expected_doc->designacao}} em falta!
+            </div>
+            @endif
+        @endforeach
+      @endforeach
+        
+    </div>
+
+    <!-- Documentos em Falta -->
+ 
  </div>
 @endsection

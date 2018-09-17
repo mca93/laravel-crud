@@ -13,7 +13,7 @@
             <th class="text-center">Nome</th>
             <th class="text-center">Cidade</th>
             <th class="text-center">Pessoa de Contacto</th>
-            <th class="text-center">KYV Status</th>
+            <!--<th class="text-center">KYV Status</th> -->
 
             <th class="text-center"> Accoes</th>
         </tr>
@@ -24,7 +24,7 @@
             <td class="text-center">{{substr($fornecedor->nome, 0, 10)}}{{strlen($fornecedor->nome)>10 ? "...": ""}}</td>
             <td class="text-center">{{$fornecedor->cidade}}</td>
             <td class="text-center"><a href="{{route('responsavel', ['fornecedor_id'=>$fornecedor->id, 'pessoaContacto_id'=>$fornecedor->pessoasContacto()->first()->id])}}">{{substr($fornecedor->pessoasContacto()->first()->nome, 0, 10)}}{{strlen($fornecedor->pessoasContacto()->first()->nome)>10 ? "...": ""}}</a></td>
-            <td class="text-center">{{$fornecedor->kyv_status}}</td>
+            <!--<td class="text-center">{{$fornecedor->kyv_status}}</td>-->
 
             <td class="text-center">
                 <a href="{{route('fornecedor.edit',['id'=>$fornecedor->id])}}" class="btn btn-warning"><span class="fa fa-edit">Alterar</span></a>
